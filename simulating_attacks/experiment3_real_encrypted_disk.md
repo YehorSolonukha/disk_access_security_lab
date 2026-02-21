@@ -1,29 +1,28 @@
 # Experiment 2: Performing unautorized CRUD operations on real unencrypted disk
 
 ## Objectives:
-Demonstrate that booting a Live OS from a USB drive grants full CRUD privileges over an unencrypted host disk, bypassing all host OS authentication.
+- Demonstrate how Full Disk Encryption (FDE) neutralizes the CRUD attack by ensuring that data at rest is unreadable and can't be modified even if the drive is physically moved to an attacker's machine
+- Highlight the difference between mitigating attacks that target Confidentiality/Integrity vs Availability
 
 ## Results
 - Outcome: Full administrative access to the host's files was achieved without ever entering a Windows password.
 - Conclusion: OS-level login credentials provide zero protection against an attacker with physical access to an unencrypted drive.The hardware will trust any OS it is told to boot unless further measures are taken.
 
 ## Environment
-- Target: A physical PC or laptop with an encrypted disk (in my case - Windows 11 Lenovo laptop with BitLocker).
-- Attacker: Linux Mint .iso (or Ubuntu/Kali...) flashed to the USB.
+- ref. experiment2
 
 ## Execution Steps:
+Target Setup
+- Open File Explorer, right-click the C: drive, and select Turn on BitLocker.
+- Wait until encryption process is completed (you can check status with ```manage-bde -status``` if needed)
+
 Attacker Setup
-1. Install Linux Mint .iso (or Ubuntu/Kali)
-2. Use a flashing tool like BalenaEtcher to write the .iso to the USB drive. This makes the USB bootable.
+- ref. experiment2
 
 Gaining Access 
-1. Insert the Live USB into the Target laptop while it is powered off
-(might be better to restart main system rather than shutting it down to ensure read-write permissions work properly)
-2. Power on the laptop and immediately tap the Function key to enter the Boot Menu (typically F12).
-3. Select the USB drive as the primary boot device.
-4. Once the Linux Mint "Live" desktop loads, open the terminal.
+- ref. experiment2
 
-CRUD Operations
+! CRUD Operations !
 1. Identify the Target Partition (should have no mounpoints, might have label SYSTEM next to it, usually ntfs type):
 ```
 lsblk -f
