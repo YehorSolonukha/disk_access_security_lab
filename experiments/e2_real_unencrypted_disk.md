@@ -1,17 +1,17 @@
-# Experiment 2: Performing unautorized CRUD operations on real unencrypted disk
+## Gaining access to real unencrypted disk via live USB Boot
 
-## Objectives:
-Demonstrate that booting a Live OS from a USB drive grants full CRUD privileges over an unencrypted host disk, bypassing all host OS authentication.
+### Objectives:
+- Demonstrate that booting a Live OS from a USB drive grants full CRUD privileges over an unencrypted host disk, bypassing all host OS authentication.
 
-## Results
+### Results
 - Outcome: Full administrative access to the host's files was achieved without ever entering a Windows password.
 - Conclusion: OS-level login credentials provide zero protection against an attacker with physical access to an unencrypted drive.The hardware will trust any OS it is told to boot unless further measures are taken.
 
-## Environment
+### Environment
 - Target: A physical PC or laptop with an encrypted disk (in my case - Windows 11 Lenovo laptop with BitLocker).
 - Attacker: Linux Mint .iso (or Ubuntu/Kali...) flashed to the USB.
 
-## Execution Steps:
+### Execution Steps:
 Attacker Setup
 1. Install Linux Mint .iso (or Ubuntu/Kali)
 2. Use a flashing tool like BalenaEtcher to write the .iso to the USB drive. This makes the USB bootable.

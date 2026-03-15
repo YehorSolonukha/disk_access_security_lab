@@ -1,17 +1,18 @@
-# Experiment 1: Performing unautorized CRUD operations on unencrypted disk
+## Gaining access to unencrypted disk (VM)
 
-## Objectives:
-Demonstrate that physical access (simulated via virtual disk attachment) allows an attacker to bypass host OS authentication and perform CRUD operations on unencrypted file system.
+### Objectives:
+- Demonstrate that physical access (simulated via VMs) allows an attacker to bypass host OS authentication and perform CRUD operations on unencrypted file system.
 
-## Results
+### Results
 - Outcome: Unauthorized CRUD operations can be successfully performed.
 - Conclusion: OS-level login credentials provide zero protection against an attacker with physical access to an unencrypted drive.
 
-## Environment
-Hypervisor: VirtualBox, Target: Linux Mint VM (Unencrypted ext4 filesystem), Attacker: Linux Mint VM.
+### Environment
+- Hypervisor: VirtualBox
+- Target: Linux Mint VM (Unencrypted ext4 filesystem)
+- Attacker: Linux Mint VM.
 
-## Execution Steps:
-
+### Execution Steps:
 Target Setup
 1. Install Linux Mint on the Target VM without encrypting the home directory.
 2. Boot the Target VM, open the terminal, and create a test artifact:
@@ -38,7 +39,7 @@ sudo mount /dev/sdb3 /mnt
 - read and copy data:
 ```
 mkdir /home/TARGET_DIR
-cat /mnt/home/<target_username>/TEST_DIR/TEST_FILE | sudo tee /home/TARGET_DIR/TARGET_FILE
+cat /mnt/home/<target_username>/TEST_DIR/TEST_FILE | sudo tee home/TARGET_DIR/TARGET_FILE
 ```
 - change original data
 ```
